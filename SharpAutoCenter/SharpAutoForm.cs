@@ -16,5 +16,20 @@ namespace SharpAutoCenter
         {
             InitializeComponent();
         }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Hi!! It's a small app for calculate total amount for new or old vehicle");
+        }
     }
 }
