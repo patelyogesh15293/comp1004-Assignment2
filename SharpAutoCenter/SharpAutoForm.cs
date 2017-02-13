@@ -1,4 +1,11 @@
-﻿using System;
+﻿// Appllication Name:   Sharp Auto Center
+// Author's Name:       Yogeshkumar PAtel
+// Student ID:          200334362
+// Date:                February 12, 2017
+// Description:         This aplication used to calculate amount due for old or new vehicles
+//                      based on their addinational and general features added. 
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -166,8 +173,8 @@ namespace SharpAutoCenter
        
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            // Reste all text box values
-            BasePriceTextBox.Text = "";
+            // Reset all text box values
+            BasePriceTextBox.Text = "$0";
             AdditionalOptionsTextBox.Text = "";
             SubTotalTextBox.Text = "";
             SalesTaxTextBox.Text = "";
@@ -241,7 +248,7 @@ namespace SharpAutoCenter
             double _standardCarPrice = 0;
             double _pearlizedCarPrice = 560.80;
             double _customizedCarPrice = 1012.23;
-            
+
             // If condition for set value when deefault
             if (StandardRadioButton.Checked == true)
             {
@@ -336,35 +343,21 @@ namespace SharpAutoCenter
             _amountDue = _total - _tradeAmount;
 
             // Display all variable to appropiate textbox
-            SubTotalTextBox.Text = Convert.ToString(_subtotal);
-            SalesTaxTextBox.Text = Convert.ToString(_tax);
-            TotalTextBox.Text = Convert.ToString(_total);
-            AmountDueTextBox.Text = Convert.ToString(_amountDue);
+            SubTotalTextBox.Text = "$" + Math.Round(_subtotal, 2).ToString();
+            SalesTaxTextBox.Text = "$" + Math.Round(_tax).ToString();
+            TotalTextBox.Text = "$" + Math.Round(_total).ToString();
+            AmountDueTextBox.Text = "$" + Math.Round(_amountDue).ToString();
         }
 
         /// <summary>
-        /// private method for validate enter number is correct or not
+        /// menustrip exit handler
         /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        private bool _numberPositive(String value)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            double _value = 0.0;
-            if (Double.TryParse(value, out _value))
-            {
-                if (_value >= 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+            this.Close();
         }
     }
 }
