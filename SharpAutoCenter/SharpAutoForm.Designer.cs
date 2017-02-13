@@ -68,6 +68,8 @@
             this.ExitButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             this.CalculateButton = new System.Windows.Forms.Button();
+            this.FontDialogBox = new System.Windows.Forms.FontDialog();
+            this.ColorDialogBox = new System.Windows.Forms.ColorDialog();
             this.MenuStrip.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -102,7 +104,7 @@
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             // 
             // editToolStripMenuItem
@@ -116,6 +118,7 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.BackColorChanged += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // undoToolStripMenuItem
             // 
@@ -134,7 +137,7 @@
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(162, 6);
             // 
             // fontToolStripMenuItem
             // 
@@ -142,6 +145,8 @@
             this.fontToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.fontToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.fontToolStripMenuItem.Text = "&Font";
+            this.fontToolStripMenuItem.BackColorChanged += new System.EventHandler(this.colorToolStripMenuItem_Click);
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // colorToolStripMenuItem
             // 
@@ -149,6 +154,7 @@
             this.colorToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
             this.colorToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.colorToolStripMenuItem.Text = "&Color";
+            this.colorToolStripMenuItem.BackColorChanged += new System.EventHandler(this.colorToolStripMenuItem_Click);
             this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
@@ -220,6 +226,7 @@
             this.CustomizedDetailingRadioButton.TabIndex = 2;
             this.CustomizedDetailingRadioButton.Text = "Customized Detailing";
             this.CustomizedDetailingRadioButton.UseVisualStyleBackColor = true;
+            this.CustomizedDetailingRadioButton.CheckedChanged += new System.EventHandler(this.CustomizedDetailingRadioButton_CheckedChanged);
             // 
             // PearlizedRadioButton
             // 
@@ -231,6 +238,7 @@
             this.PearlizedRadioButton.TabIndex = 1;
             this.PearlizedRadioButton.Text = "Pearlized";
             this.PearlizedRadioButton.UseVisualStyleBackColor = true;
+            this.PearlizedRadioButton.CheckedChanged += new System.EventHandler(this.PearlizedRadioButton_CheckedChanged);
             // 
             // StandardRadioButton
             // 
@@ -244,6 +252,7 @@
             this.StandardRadioButton.TabStop = true;
             this.StandardRadioButton.Text = "Standard";
             this.StandardRadioButton.UseVisualStyleBackColor = true;
+            this.StandardRadioButton.CheckedChanged += new System.EventHandler(this.StandardRadioButton_CheckedChanged);
             // 
             // AdditionalItemsGroupBox
             // 
@@ -268,6 +277,7 @@
             this.ComputerNavigationCheckBox.TabIndex = 2;
             this.ComputerNavigationCheckBox.Text = "Computer Navigation";
             this.ComputerNavigationCheckBox.UseVisualStyleBackColor = true;
+            this.ComputerNavigationCheckBox.CheckedChanged += new System.EventHandler(this.ComputerNavigationCheckBox_CheckedChanged);
             // 
             // LeatherInteriorCheckBox
             // 
@@ -279,6 +289,7 @@
             this.LeatherInteriorCheckBox.TabIndex = 1;
             this.LeatherInteriorCheckBox.Text = "Leather Interior";
             this.LeatherInteriorCheckBox.UseVisualStyleBackColor = true;
+            this.LeatherInteriorCheckBox.CheckedChanged += new System.EventHandler(this.LeatherInteriorCheckBox_CheckedChanged);
             // 
             // StereoSystemCheckBox
             // 
@@ -290,6 +301,7 @@
             this.StereoSystemCheckBox.TabIndex = 0;
             this.StereoSystemCheckBox.Text = "Stereo System";
             this.StereoSystemCheckBox.UseVisualStyleBackColor = true;
+            this.StereoSystemCheckBox.CheckedChanged += new System.EventHandler(this.StereoSystemCheckBox_CheckedChanged);
             // 
             // tableLayoutPanel3
             // 
@@ -337,6 +349,7 @@
             this.TradeInAllowanceTextBox.Name = "TradeInAllowanceTextBox";
             this.TradeInAllowanceTextBox.Size = new System.Drawing.Size(179, 24);
             this.TradeInAllowanceTextBox.TabIndex = 12;
+            this.TradeInAllowanceTextBox.Text = "0";
             // 
             // TotalTextBox
             // 
@@ -454,6 +467,7 @@
             this.BasePriceTextBox.Name = "BasePriceTextBox";
             this.BasePriceTextBox.Size = new System.Drawing.Size(179, 24);
             this.BasePriceTextBox.TabIndex = 7;
+            this.BasePriceTextBox.Text = "0";
             // 
             // tableLayoutPanel2
             // 
@@ -480,6 +494,7 @@
             this.ExitButton.TabIndex = 2;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // ClearButton
             // 
@@ -489,6 +504,7 @@
             this.ClearButton.TabIndex = 1;
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
             // CalculateButton
             // 
@@ -570,6 +586,8 @@
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.ToolStripMenuItem fontToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
+        private System.Windows.Forms.FontDialog FontDialogBox;
+        private System.Windows.Forms.ColorDialog ColorDialogBox;
     }
 }
 
