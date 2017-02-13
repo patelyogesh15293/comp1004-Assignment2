@@ -315,7 +315,31 @@ namespace SharpAutoCenter
 
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-              
+            // declare some private variables
+            double _carAmount;
+            double _additionalAmount;
+            double _tradeAmount;
+            double _subtotal;
+            double _tax;
+            double _total;
+            double _amountDue;
+
+            // Assign text box content to private variables
+            _carAmount = Convert.ToDouble((BasePriceTextBox.Text as string).TrimStart('$'));
+            _additionalAmount = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+            _tradeAmount = Convert.ToDouble((TradeInAllowanceTextBox.Text as string).TrimStart('$'));
+            
+            // Calculations
+            _subtotal = _additionalAmount + _carAmount;
+            _tax = _subtotal * 0.13;
+            _total = _subtotal + _tax;
+            _amountDue = _total - _tradeAmount;
+
+            // Display all variable to appropiate textbox
+            SubTotalTextBox.Text = Convert.ToString(_subtotal);
+            SalesTaxTextBox.Text = Convert.ToString(_tax);
+            TotalTextBox.Text = Convert.ToString(_total);
+            AmountDueTextBox.Text = Convert.ToString(_amountDue);
         }
 
         /// <summary>
