@@ -17,8 +17,7 @@ namespace SharpAutoCenter
         {
             InitializeComponent();
         }
-        
-
+       
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialogBox.ShowDialog();
@@ -53,7 +52,34 @@ namespace SharpAutoCenter
 
         private void StereoSystemCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            
+            // Declare some variables
+            double _stereoCheckedValue;
+            double _holdValue;
+            double _stereoSystemValue = 450;
+
+            // If conditions for check StereoSystemCheckBox is checked or not
+            if (StereoSystemCheckBox.Checked == true)
+            {
+                // Another If condition for check AdditionalTextBox value for adding the value
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _stereoSystemValue.ToString("C2");
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _stereoCheckedValue = _stereoSystemValue + _holdValue;
+                    AdditionalOptionsTextBox.Text = _stereoCheckedValue.ToString("C2");
+                }
+            }
+
+            // result for when user unchecked textbox 
+            else
+            {
+                _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                _stereoCheckedValue = _holdValue - _stereoSystemValue;
+                AdditionalOptionsTextBox.Text = _stereoCheckedValue.ToString("C2");
+            }
         }
 
         /// <summary>
@@ -63,8 +89,36 @@ namespace SharpAutoCenter
         /// <param name="e"></param>
 
         private void LeatherInteriorCheckBox_CheckedChanged(object sender, EventArgs e)
-        {  
-            
+        {
+            // Declare some variables
+            double _leatherInteriorCheckedValue;
+            double _holdValue;
+            double _leatherInteriorValue = 980.54;
+
+            // If conditions for check LeatherInteriroCheckBox is checked or not
+            if (LeatherInteriorCheckBox.Checked == true)
+            {
+                // Another If condition for check AdditionalTextBox value for adding the value
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _leatherInteriorValue.ToString("C2");
+                }
+
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _leatherInteriorCheckedValue = _leatherInteriorValue + _holdValue;
+                    AdditionalOptionsTextBox.Text = _leatherInteriorCheckedValue.ToString("C2");
+                }
+            }
+
+            // result for when user unchecked textbox 
+            else
+            {
+                _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                _leatherInteriorCheckedValue = _holdValue - _leatherInteriorValue;
+                AdditionalOptionsTextBox.Text = _leatherInteriorCheckedValue.ToString("C2");
+            }
         }
 
         /// <summary>
@@ -75,9 +129,41 @@ namespace SharpAutoCenter
         
         private void ComputerNavigationCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            
+            // Declare some variables
+            double _navigationCheckedValue;
+            double _holdValue;
+            double _navigationValue = 980.54;
+
+            // If conditions for check ComputerNavigationCheckBox is checked or not
+            if (ComputerNavigationCheckBox.Checked == true)
+            {
+                // Another If condition for check AdditionalTextBox value for adding the value
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _navigationValue.ToString("C2");
+                }
+
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _navigationCheckedValue = _navigationValue + _holdValue;
+                    AdditionalOptionsTextBox.Text = _navigationCheckedValue.ToString("C2");
+                }
+            }
+
+            // result for when user unchecked textbox 
+            else
+            {
+                _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                _navigationCheckedValue = _holdValue - _navigationValue;
+                AdditionalOptionsTextBox.Text = _navigationCheckedValue.ToString("C2");
+            }
         }
 
+        /// <summary>
+        /// Private method for calculate all additional and base value  
+        /// </summary>
+       
         private void ClearButton_Click(object sender, EventArgs e)
         {
             // Reste all text box values
@@ -148,27 +234,113 @@ namespace SharpAutoCenter
 
         private void _featureCarPrices()
         {
+            double _holdValue;
+            double _standardAddedValue;
+            double _custAddedValue;
+            double _pearAddedValue;
             double _standardCarPrice = 0;
             double _pearlizedCarPrice = 560.80;
             double _customizedCarPrice = 1012.23;
             
             // If condition for set value when deefault
-            if (StandardRadioButton.Checked)
+            if (StandardRadioButton.Checked == true)
             {
-                AdditionalOptionsTextBox.Text = _standardCarPrice.ToString("C2");
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _standardCarPrice.ToString("C2");
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _standardAddedValue = _standardCarPrice + _holdValue;
+                    AdditionalOptionsTextBox.Text = _standardAddedValue.ToString("C2");
+                }
+                else
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _standardAddedValue = _holdValue - _standardCarPrice;
+                    AdditionalOptionsTextBox.Text = _standardAddedValue.ToString("C2");
+                }
+                
             }
             //when pearlized radio button checked 
             else if (PearlizedRadioButton.Checked)
             {
-                AdditionalOptionsTextBox.Text = _pearlizedCarPrice.ToString("C2");
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _pearlizedCarPrice.ToString("C2");
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _pearAddedValue = _standardCarPrice + _holdValue;
+                    AdditionalOptionsTextBox.Text = _pearAddedValue.ToString("C2");
+                }
+                else
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _pearAddedValue = _holdValue - _standardCarPrice;
+                    AdditionalOptionsTextBox.Text = _pearAddedValue.ToString("C2");
+                }
             }
             //when customized radio button checked
             else if (CustomizedDetailingRadioButton.Checked)
             {
-                AdditionalOptionsTextBox.Text = _customizedCarPrice.ToString("C2");
+
+                if (AdditionalOptionsTextBox.Text == "")
+                {
+                    AdditionalOptionsTextBox.Text = _customizedCarPrice.ToString("C2");
+                }
+                else if (AdditionalOptionsTextBox.Text != "")
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _custAddedValue = _standardCarPrice + _holdValue;
+                    AdditionalOptionsTextBox.Text = _custAddedValue.ToString("C2");
+                }
+                else
+                {
+                    _holdValue = Convert.ToDouble((AdditionalOptionsTextBox.Text as string).TrimStart('$'));
+                    _custAddedValue = _holdValue - _standardCarPrice;
+                    AdditionalOptionsTextBox.Text = _custAddedValue.ToString("C2");
+                }
             }
             else StandardRadioButton.Select();
         }
 
+        /// <summary>
+        /// Calculate button handler for gives total and sales tax
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+              
+        }
+
+        /// <summary>
+        /// private method for validate enter number is correct or not
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        private bool _numberPositive(String value)
+        {
+            double _value = 0.0;
+            if (Double.TryParse(value, out _value))
+            {
+                if (_value >= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
