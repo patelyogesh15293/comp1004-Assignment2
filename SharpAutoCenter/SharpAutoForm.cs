@@ -338,7 +338,7 @@ namespace SharpAutoCenter
             
             // Calculations
             _subtotal = _additionalAmount + _carAmount;
-            _tax = _subtotal * 0.13;
+            _tax = _subtotal * 0.13;    
             _total = _subtotal + _tax;
             _amountDue = _total - _tradeAmount;
 
